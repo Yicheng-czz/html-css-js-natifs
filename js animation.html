@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 150px;
+            top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="ks">开始900</button>
+    <button class="fh">返回500</button>
+    <div></div>
+
+    <script>
+        //函数封装
+        // function animate(object, target) {
+        //     //避免重复按按钮，导致多个定时器重叠
+        //     clearInterval(object.timer);
+        //     object.timer = setInterval(function() {
+        //         if (object.offsetLeft >= target) {
+        //             clearInterval(object.timer);
+        //         } else {
+        //             object.style.left = object.offsetLeft + 1 + 'px';
+        //         }
+        //     })
+        // }
+        var box = document.querySelector('div');
+        var btnks = document.querySelector('.ks');
+        var btnfh = document.querySelector('.fh');
+        btnks.addEventListener('click', function() {
+            animate1(box, 900, function() {
+                box.style.backgroundColor = 'red';
+            });
+        })
+        btnfh.addEventListener('click', function() {
+            animate1(box, 500, function() {
+                box.style.backgroundColor = 'pink';
+            });
+        })
+
+
+        //缓动效果原理：
+        function animate1(object, target, callback) {
+            //callback相当于接收一个函数
+            //避免重复按按钮，导致多个定时器重叠
+            clearInterval(object.timer);
+            object.timer = setInterval(function() {
+                if (object.offsetLeft == target) {
+                    clearInterval(object.timer);
+                    //回调函数写到定时器结束里面
+                    if (callback) {
+                        //调用函数
+                        callback();
+                    }
+                } else {
+                    var s = (target - object.offsetLeft) / 10;
+                    //步长取整
+                    s = s > 0 ? Math.ceil(s) : Math.floor(s);
+                    object.style.left = object.offsetLeft + s + 'px';
+                }
+            }, 15)
+        }
+    </script>
+</body>
+
+</html>

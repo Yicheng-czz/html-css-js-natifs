@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .common {
+            width: 250px;
+            height: 250px;
+            margin: 200px auto;
+            border: 1px solid lightgrey;
+            position: relative;
+        }
+        
+        .common>img {
+            width: 100%;
+        }
+        
+        .big {
+            position: absolute;
+            left: 250px;
+            top: 0px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid lightgrey;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .big>img {
+            width: 200%;
+            position: relative;
+        }
+        
+        ._cover {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(190, 190, 10);
+            opacity: .5;
+            border: 0.7px solid lightgrey;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="common">
+        <img src="images/小米手机.jpg" alt="">
+        <div class="big">
+            <img src="images/小米手机.jpg" alt="" class="bigimg">
+        </div>
+        <div class="_cover">
+        </div>
+    </div>
+    <script>
+        var cover = document.querySelector('._cover');
+        var big = document.querySelector('.big');
+        var common = document.querySelector('.common');
+        var bigimg = document.querySelector('.bigimg');
+        common.addEventListener('mouseover', function() {
+            cover.style.display = 'block';
+            big.style.display = 'block';
+        })
+        common.addEventListener('mouseout', function() {
+            cover.style.display = 'none';
+            big.style.display = 'none';
+        })
+        common.addEventListener('mousemove', function(e) {
+            var x = e.pageX - common.offsetLeft; //注意大小写
+            var y = e.pageY - common.offsetTop;
+            var maskX = x - cover.offsetWidth / 2;
+            var maskY = y - cover.offsetHeight / 2;
+            //遮挡层最大移动距离
+            var maskMAX = common.offsetWidth - cover.offsetWidth;
+
+            if (maskX < 0) {
+                maskX = 0;
+            } else if (maskX > maskMAX) {
+                maskX = maskMAX;
+            }
+            if (maskY < 0) {
+                maskY = 0;
+            } else if (maskY > maskMAX) {
+                maskY = maskMAX;
+            }
+            cover.style.left = maskX + 'px';
+            cover.style.top = maskY + 'px';
+            var bigmax = bigimg.offsetWidth - big.offsetWidth; //大图最大移动距离
+            var bigX = maskX * bigmax / maskMAX;
+            var bigY = maskY * bigmax / maskMAX;
+            bigimg.style.left = -bigX + 'px'; //相反的方向，要加负号
+            bigimg.style.top = -bigY + 'px';
+
+        })
+    </script>
+</body>
+
+</html>

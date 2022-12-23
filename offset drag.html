@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            height: 736px;
+            width: 100%;
+            background-color: violet;
+        }
+        
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            left: 100px;
+            top: 200px;
+        }
+        
+        .son:hover {
+            cursor: move;
+        }
+        
+        .son {
+            width: 50px;
+            height: 50px;
+            background-color: teal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+    <script>
+        var father = document.querySelector('.father');
+
+        var son = document.querySelector('.son');
+        //框的拖拽！！！
+        son.addEventListener('mousedown', function(e) {
+            father.style.cursor = 'move';
+            var x = e.pageX - father.offsetLeft;
+            var y = e.pageY - father.offsetTop;
+            console.log(x);
+            console.log(y);
+            document.addEventListener('mousemove', move)
+
+            function move(e) {
+                father.style.left = e.pageX - x + 'px';
+                father.style.top = e.pageY - y + 'px';
+            }
+            // this.innerHTML = 'x在框里的坐标是' + x + ', y在框里的的坐标是' + y;
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', move);
+                father.style.cursor = '';
+            })
+        })
+    </script>
+</body>
+
+</html>

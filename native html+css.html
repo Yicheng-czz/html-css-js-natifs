@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f3f5f7;
+            position: relative;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .nav-all-wid {
+            width: 100%;
+            height: 100px;
+            background-color: #f3f5f7;
+        }
+        
+        .nav {
+            height: 100px;
+            width: 1315px;
+            background-color: #f3f5f7;
+            margin: 0 auto;
+            border-top: 1px solid transparent;
+            /*父元素塌陷*/
+        }
+        
+        .logo {
+            float: left;
+            width: 196px;
+            height: 42px;
+            margin-right: 60px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .nav-intro {
+            float: left;
+        }
+        
+        .nav-intro li {
+            display: inline-block;
+            list-style: none;
+            margin-top: 25px;
+            margin-bottom: 27px;
+            padding: 13px 15px;
+        }
+        
+        .nav-intro li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        
+        .search {
+            float: left;
+            height: 99px;
+        }
+        
+        .search input[type='text'] {
+            float: left;
+            border: 1px solid #00a4ff;
+            height: 42px;
+            width: 361px;
+            margin: 30px 0px 10px 80px;
+            line-height: 12px;
+            padding-left: 18px;
+            outline: none;
+        }
+        
+        .ssj {
+            width: 50px;
+            height: 42px;
+            float: left;
+            margin: 30px 30px 30px 0px;
+        }
+        
+        .ssj a img {
+            height: 44px;
+        }
+        
+        .person {
+            width: 155px;
+            height: 36px;
+            float: left;
+            margin: 35px 5px 35px 0px;
+        }
+        
+        .person img {
+            float: left;
+        }
+        
+        .person p {
+            display: inline;
+            margin: 44px 5px 44px 15px;
+        }
+        
+        .header {
+            background-color: #1c036c;
+            width: 100%;
+            height: 419px;
+            margin-bottom: 10px;
+        }
+        
+        .header .pic {
+            margin: 0 auto;
+            height: 419px;
+            width: 1202px;
+            background-image: url(images/bjt1.png);
+            position: relative;
+        }
+        
+        .header .pic .sldh {
+            width: 187px;
+            height: 100%;
+        }
+        
+        .header .pic .sldh li {
+            list-style: none;
+        }
+        
+        .header .pic .sldh a:hover {
+            color: #22b0ff;
+        }
+        
+        .header .pic .sldh li a {
+            width: 191px;
+            height: 43px;
+            display: inline-block;
+            background-color: rgba(20, 2, 75, 0.7);
+            text-decoration: none;
+            color: #ffffff;
+            line-height: 43px;
+            text-indent: 2em;
+        }
+        
+        .header .pic .sldh li:last-child a {
+            padding-bottom: 12px;
+        }
+        
+        .header .pic .sldh li:first-child a {
+            padding-top: 13px;
+        }
+        
+        .introduction {
+            width: 1200px;
+            height: 61px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid transparent;
+            box-shadow: 0 1px 12px rgba(0, 0, 0, .4);
+            /* 0px：阴影水平偏移值（可取正负值）；
+                1px：阴影垂直偏移值（可取正负值）；
+                12px：阴影模糊值； */
+        }
+        
+        .introduction a {
+            display: inline-block;
+            width: 124px;
+            height: 61px;
+            margin-left: 4px;
+            margin-right: 4px;
+            background-color: #ffffff;
+            line-height: 61px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+        
+        .introduction a:hover {
+            color: darkred;
+            /* 权重20 */
+        }
+        
+        .introduction a:first-child {
+            color: #00a4ff;
+            font-weight: 600;
+            /* 权重20 ，后面覆盖前面的*/
+        }
+        
+        .introduction a:last-child {
+            color: #00a4ff;
+            font-weight: 600;
+            float: right;
+            /* 权重20，后面覆盖前面的 */
+        }
+        
+        span {
+            color: #bfbfbf;
+        }
+        
+        .wdkc {
+            width: 230px;
+            height: 300px;
+            position: absolute;
+            bottom: 10%;
+            right: 0%;
+            background-color: #ffffff;
+        }
+        
+        .wdkc ul {
+            width: 192px;
+            height: 182px;
+            margin: 19px auto;
+            margin-bottom: 0px;
+        }
+        
+        .wdkc ul li {
+            list-style: none;
+            width: 192px;
+            height: 50px;
+            border-bottom: 2px solid #efefef;
+            margin-bottom: 13px;
+        }
+        
+        .wdkc ul li:last-child {
+            margin-bottom: 0px;
+        }
+        
+        .wdkc h4 {
+            display: inline-block;
+            width: 100%;
+            height: 48px;
+            background-color: #9bceea;
+            line-height: 48px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .wdkc h4>a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        
+        .wdkc ul li h6,
+        .wdkc ul li p {
+            display: inline-block;
+        }
+        
+        .wdkc ul li h6 {
+            width: 67px;
+            height: 16px;
+            font-size: 16px;
+            color: #5f5f5f;
+        }
+        
+        .wdkc ul li .bcd {
+            width: 89px;
+            height: 14px;
+            margin-left: 8px;
+            font-size: 14px;
+            color: #5f5f5f;
+        }
+        
+        .wdkc ul li a {
+            text-decoration: none;
+        }
+        
+        .wdkc ul li span {
+            display: inline-block;
+            font-size: 9px;
+            color: #a5a5a5;
+        }
+        
+        #qbkc-btn {
+            display: block;
+            width: 198px;
+            height: 38px;
+            border: 1px solid #22b0ff;
+            font-size: 15px;
+            text-align: center;
+            line-height: 38px;
+            color: #22b0ff;
+            margin: 0 auto;
+            text-decoration: none;
+        }
+        
+        #qbkc-btn:hover {
+            background-color: #22b0ff;
+            color: white;
+        }
+        
+        .intro1-jptj {
+            width: 1200px;
+            height: 612px;
+            margin: 35px auto 20px;
+        }
+        
+        .intro1-jptj .bt {
+            width: 100%;
+            height: 22px;
+            margin-bottom: 30px;
+        }
+        
+        .intro1-jptj .bt h3 {
+            font-size: 22px;
+            float: left;
+            font-weight: 400;
+            color: #494949;
+        }
+        
+        .intro1-jptj .bt a {
+            float: right;
+            font-size: 11px;
+            color: #a5a5a5;
+            margin: 19px 30px 0px 0px;
+            text-decoration: none;
+        }
+        
+        .intro1-jptj .bt::after {
+            content: '';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+        
+        .jptp {
+            height: 570px;
+            width: 100%;
+        }
+        
+        .jptp li {
+            float: left;
+            /* background-color: pink; */
+            background-color: #ffffff;
+            width: 229px;
+            height: 271px;
+            margin-bottom: 15px;
+            margin-right: 13px;
+            transition: all .7s;
+        }
+        
+        .jptp li:nth-child(5n) {
+            margin-right: 0px;
+        }
+        
+        .jptp li a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .jptp li img {
+            width: 100%;
+            height: 155px;
+        }
+        
+        .jptp li h6 {
+            width: 186px;
+            height: 34px;
+            margin: 24px 19px 14px 24px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .jptp li p {
+            width: 186px;
+            height: 13px;
+            font-size: 13px;
+            color: #999999;
+            margin: 0px 18px 26px 22px;
+        }
+        
+        .jptp li p span {
+            color: #ff7c2d;
+        }
+        
+        .jptp li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 1px 12px rgba(0, 0, 0, .4);
+        }
+        
+        .cbl {
+            width: 185px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            margin-left: -811px;
+            top: 912px;
+            background-color: #ffffff;
+        }
+        
+        .cbl li a {
+            display: block;
+            height: 36px;
+            width: 100%;
+            line-height: 36px;
+            text-indent: 2em;
+            margin-top: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 13px;
+        }
+        
+        .cbl li:last-child a {
+            margin-bottom: 14px;
+        }
+        
+        .bcrm-all-k {
+            width: 1200px;
+            height: 470px;
+            margin: 23px auto 0;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k {
+            height: 30px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 22px;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k h4 {
+            font-size: 21px;
+            float: left;
+            font-weight: 500;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd {
+            width: auto;
+            position: absolute;
+            left: 50%;
+            margin-left: -170px;
+            margin-top: 5px;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd::before,
+        .bcrm-all-k .bcrm-no1-k .cd::after {
+            content: '';
+            display: table;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd::after {
+            clear: both;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd li {
+            float: left;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd li:first-child a {
+            color: #00a4ff;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k .cd li a {
+            display: inline-block;
+            margin-right: 70px;
+            text-decoration: none;
+            color: #868686;
+            font-size: 15px;
+        }
+        
+        .bcrm-all-k .bcrm-no1-k a {
+            display: block;
+            float: right;
+            text-decoration: none;
+            color: #a5a5a5;
+            font-size: 11px;
+            margin-right: 30px;
+            margin-top: 5px;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k {
+            width: 100%;
+            height: 392px;
+            position: relative;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k::after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            height: 0;
+            clear: both;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k>img:first-child {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-right: 15px;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k>img:nth-child(2) {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div::after {
+            content: '';
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k a {
+            float: left;
+            width: 227px;
+            height: 269px;
+            /* background-color: pink; */
+            margin-right: 17px;
+            transition: all .7s;
+            background-color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k a:last-child {
+            margin-right: 0;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div a img {
+            width: 100%;
+            height: 155px;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div a h6 {
+            width: 186px;
+            height: 34px;
+            margin: 24px 19px 14px 24px;
+            font-size: 14px;
+            font-weight: 400;
+            color: black;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div a p {
+            width: 186px;
+            height: 13px;
+            font-size: 13px;
+            color: #999999;
+            margin: 0px 18px 26px 22px;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div a p span {
+            color: #ff7c2d;
+        }
+        
+        .bcrm-all-k .bcrm-pic-k div a:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 1px 12px rgba(0, 0, 0, .4);
+        }
+        
+        .sdk {
+            width: 1200px;
+            height: 1132px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="nav-all-wid">
+        <div class="nav">
+            <div class="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+
+            <ul class="nav-intro">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">课程</a>
+                </li>
+                <li>
+                    <a href="#">职业规划</a>
+                </li>
+            </ul>
+
+            <div class="search">
+                <input type="text" placeholder="输入关键词">
+                <div class="ssj">
+                    <a href=""><img src="images/btn.png" alt=""></a>
+                </div>
+            </div>
+            <div class="person">
+                <img src="images/user.png" alt="">
+                <p>qq-leishui</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="header">
+        <div class="pic">
+            <div class="sldh">
+                <ul>
+                    <li>
+                        <a href="#">前端开发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">后端开发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">移动开发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">人工智能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">商业预测&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">云计算&大数据&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">运维&从测试&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">UI设计&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                    <li>
+                        <a href="#">产品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="wdkc">
+
+                <h4><a href="#">我的课程表</a></h4>
+
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            <h6>继续学习</h6>
+                            <p class="bcd">程序语言设计</p>
+                            <span>正在学习-使用对象</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h6>继续学习</h6>
+                            <p class="bcd">程序语言设计</p>
+                            <span>正在学习-使用对象</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h6>继续学习</h6>
+                            <p class="bcd">程序语言设计</p>
+                            <span>正在学习-使用对象</span></a>
+                    </li>
+                </ul>
+                <a id='qbkc-btn' href="#">全部课程</a>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="introduction">
+        <a href="#">精品推荐</a>
+        <span>|</span>
+        <a href="#">JQuery</a>
+        <span>|</span>
+        <a href="#">Spark</a>
+        <span>|</span>
+        <a href="#">MySQL</a>
+        <span>|</span>
+        <a href="#">JavaWeb</a>
+        <span>|</span>
+        <a href="#">MySQL</a>
+        <span>|</span>
+        <a href="#">JQuery</a>
+        <a href="#">修改兴趣</a>
+    </div>
+    <ul class="cbl">
+        <li><a href="#">编程入门</a></li>
+        <li><a href="#">数据分析师</a></li>
+        <li><a href="#">机器学习工程师</a></li>
+        <li><a href="#">前端开发工程师</a></li>
+        <li><a href="#">人工智能工程师</a></li>
+        <li><a href="#">全栈工程师</a></li>
+        <li><a href="#">iOS工程师</a></li>
+        <li><a href="#">VR开发者</a></li>
+        <li><a href="#">深度学习</a></li>
+        <li><a href="#">商业预测分析师</a></li>
+        <li><a href="#">Android开发工程师</a></li>
+
+
+
+    </ul>
+    <div class="intro1-jptj">
+        <div class="bt">
+            <h3>精品推荐</h3>
+            <a href="#">查看全部</a>
+        </div>
+        <ul class="jptp">
+            <li>
+                <a href="#">
+                    <img src="images/jingpin1.png" alt="">
+                    <h6>Think PHP 5.0 博客系统实战项目演练
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin2.png" alt="">
+                    <h6>Android网络图片加载框架详解
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin3.png" alt="">
+                    <h6>Angular 2 最新框架+主流技术+项目实战
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin4.png" alt="">
+                    <h6>Android Hybird APP开发实战H5+原生！
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin4.png" alt="">
+                    <h6>Android Hybird APP开发实战H5+原生！
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin1.png" alt="">
+                    <h6>Think PHP 5.0 博客系统实战项目演练
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin2.png" alt="">
+                    <h6>Android网络图片加载框架详解
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin3.png" alt="">
+                    <h6>Angular 2 最新框架+主流技术+项目实战
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin4.png" alt="">
+                    <h6>Android Hybird APP开发实战H5+原生！
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/jingpin4.png" alt="">
+                    <h6>Android Hybird APP开发实战H5+原生！
+                    </h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+
+            </li>
+        </ul>
+
+    </div>
+    <div class="bcrm-all-k">
+        <div class="bcrm-no1-k">
+            <h4>编程入门</h4>
+            <ul class="cd">
+                <li><a href="#">热门</a></li>
+                <li><a href="#">初级</a></li>
+                <li><a href="#">中级</a></li>
+                <li><a href="#">高级</a></li>
+            </ul>
+            <a href="#">查看全部</a>
+        </div>
+        <div class="bcrm-pic-k">
+            <img src="images/zsk1.png" alt="">
+            <img src="images/zsk2.png" alt="">
+            <div>
+                <a href="#"><img src="images/stz1.png" alt="">
+                    <h6>Android Hybird APP开发实战H5+原生！</h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+                <a href="#"><img src="images/stz2.png" alt="">
+                    <h6>Kami2首页界面切换效果</h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+                <a href="#"><img src="images/stz3.png" alt="">
+                    <h6>Unity Profiler</h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+                <a href="#"><img src="images/stz4.png" alt="">
+                    <h6>Cocos2d-x 引擎源码中的纹理优化</h6>
+                    <p><span>高级</span>&nbsp;&nbsp;· &nbsp;&nbsp;1125人正在学习</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="sdk">
+        <h1>着实太懒，不想复制了</h1>
+    </div>
+
+
+
+</body>
+
+</html>

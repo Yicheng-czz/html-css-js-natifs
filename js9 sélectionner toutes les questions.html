@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: none;
+            border-collapse: collapse;
+            margin: 100px auto;
+        }
+        
+        thead {
+            background-color: skyblue;
+        }
+        
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellpadding='10'>
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="allcheck"></td>
+                <td>商品</td>
+                <td>价钱</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPad Pro</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPad Air</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var allcheck = document.querySelector('#allcheck');
+        var partchecks = document.querySelector('tbody').querySelectorAll('input');
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        
+        
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onmouseover = function() {
+                this.style.backgroundColor = 'lightgrey';
+            }
+            trs[i].onmouseout = function() {
+                this.style.backgroundColor = '';
+            }
+        }
+        allcheck.onclick = function() {
+            for (var i = 0; i < partchecks.length; i++) {
+                partchecks[i].checked = this.checked;
+            }
+        }
+        for (var i = 0; i < partchecks.length; i++) {
+            partchecks[i].onclick = function() {
+                var flag = true;
+                for (var i = 0; i < partchecks.length; i++) {
+                    if (!partchecks[i].checked) {
+                        flag = false;
+                    }
+                }
+                allcheck.checked = flag;
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>

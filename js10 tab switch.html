@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #tab_all {
+            width: 500px;
+            height: 100px;
+            margin: 100px auto;
+        }
+        
+        #tab_click {
+            width: 500px;
+            height: 30px;
+            background-color: lightgrey;
+            border: 1px solid grey;
+        }
+        
+        #tab_click li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        
+        #tab_show div:nth-child(n+2) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tab_all">
+        <ul id="tab_click">
+            <li class="current" style="background-color: pink;">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>商品评价</li>
+            <li>手机社区</li>
+        </ul>
+        <div id="tab_show">
+            <div>
+                <p>商品介绍模块内容</p>
+            </div>
+            <div>
+                <p>规格与包装模块内容</p>
+            </div>
+            <div>
+                <p>售后保障模块内容</p>
+            </div>
+            <div>
+                <p>商品评价模块内容</p>
+            </div>
+            <div>
+                <p>手机社区模块内容</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var tab_click = document.querySelector('#tab_click').querySelectorAll('li');
+        var tab_show = document.querySelector('#tab_show').querySelectorAll('div');
+        for (var i = 0; i < tab_click.length; i++) {
+            tab_click[i].setAttribute('index', i);
+            tab_click[i].onclick = function() {
+                for (var i = 0; i < tab_click.length; i++) {
+                    tab_click[i].style.backgroundColor = '';
+                    tab_show[i].style.display = 'none';
+                }
+                this.style.backgroundColor = 'pink';
+
+                var index = this.getAttribute('index');
+                tab_show[index].style.display = 'block';
+
+            }
+        }
+    </script>
+</body>
+
+</html>

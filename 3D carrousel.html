@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            perspective: 1000px;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            display: block;
+            width: 100%;
+        }
+        
+        .parent {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 50px auto;
+        }
+        
+        .parent ul {
+            width: 234px;
+            height: 156px;
+            margin: 150px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 2s;
+            transform-origin: center center 100px;
+        }
+        
+        .parent:hover ul {
+            transform: rotateY(360deg);
+        }
+        
+        li {
+            height: 156px;
+            width: 234px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-origin: center center;
+        }
+        
+        .parent ul li:nth-child(1) {
+            transform: translateZ(200px);
+        }
+        
+        .parent ul li:nth-child(2) {
+            transform: rotateY(60deg) translateZ(200px);
+        }
+        
+        .parent ul li:nth-child(3) {
+            transform: rotateY(120deg) translateZ(200px);
+        }
+        
+        .parent ul li:nth-child(4) {
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        
+        .parent ul li:nth-child(5) {
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        
+        .parent ul li:nth-child(6) {
+            transform: rotateY(300deg) translateZ(200px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <ul>
+            <li><img src="images/jingpin2.png" alt=""></li>
+            <li><img src="images/jingpin2.png" alt=""></li>
+            <li><img src="images/jingpin2.png" alt=""></li>
+            <li><img src="images/jingpin2.png" alt=""></li>
+            <li><img src="images/jingpin2.png" alt=""></li>
+            <li><img src="images/jingpin2.png" alt=""></li>
+        </ul>
+    </div>
+</body>
+
+</html>
